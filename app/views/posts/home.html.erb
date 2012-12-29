@@ -1,0 +1,29 @@
+<head>
+    <script type="text/javascript">
+var processing;
+var page1=2; 
+var stopScroll = 0;
+$(document).ready(function() {
+    window.scrollTo(0, 0); 
+    $(document).scroll(function(e) {
+        if (processing) return false;
+      if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.9) {
+           tmp =parseInt("<%= @posts.total_pages %>")
+           processing = true;
+        if(page1<=tmp){
+            $.post('/posts/home?page1='+page1,function(data) {
+                 processing = false;
+            });
+             } 
+             page1 = page1+1
+        }
+    });
+});
+</script>
+<style type="text/css">
+.loadedcontent {min-height: 850px; }
+</style>
+</head>
+<body>
+<div id="container"><div class="loadedcontent"><%= render :partial => 'post', :collection => @posts%></div></div>
+</body>    
