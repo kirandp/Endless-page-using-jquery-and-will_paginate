@@ -1,1 +1,8 @@
 Sample application for endless page using Jquery and wil_paginate.
+
+How to:
+--First set up database.
+--Run migrations.
+--Run rake db:seed to get sample data in database.
+
+view live demo here http://endlesspage-jquerywillpaginate.herokuapp.com/
